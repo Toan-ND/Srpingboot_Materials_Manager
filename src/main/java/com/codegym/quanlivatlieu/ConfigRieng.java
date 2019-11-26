@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+//
 @Configuration
 @PropertySource("classpath:upload.properties")
 class AdditionalResourceWebConfiguration implements WebMvcConfigurer {
