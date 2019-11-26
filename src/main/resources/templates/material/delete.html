@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<h3>Remove Material</h3>
+<p>
+    <a th:href="@{/materials}">
+        Back to materials list
+    </a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<div id="form">
+    <form action="#" th:action="@{/delete-material}" th:object="${material}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name: </label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>ImportDate </label>
+            <input type="text" th:field="*{importDate}"/>
+        </div>
+        <div>
+            <label>Description </label>
+            <input type="text" th:field="*{description}"/>
+        </div>
+        <div>
+            <td><label>Avatar: </label></td>
+        </div>
+        <div>
+          <td><img width="150px" height="150px" th:src="@{'/i/' + ${material.getImage()}}"></td>
+        </div>
+        <div>
+            <label>Price </label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Quantity </label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Supplier </label>
+            <select name="department">
+                <option th:each="d : ${supplier}"
+                        th:value="${d.id}"
+                        th:text="${d.name}"
+                        th:selected="(${d.id} == *{supplier.id})"></option>
+            </select>
+
+
+        </div>
+        <input type="submit" value="Delete">
+    </form>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
